@@ -162,7 +162,7 @@ function showScore() {
     let persentage = (100/questions.length) * score;
     questionElement.innerHTML = `Nátiyje: ${Math.round(persentage)}%<br>SORAWLAR: ${questions.length}<br>JUWAPLAR: ${score}!`;
     nextButton.style.display = 'block';
-    nextButton.innerHTML = 'Qayta tapsiruw';
+    nextButton.innerHTML = 'Qayta tapsırıw';
 }
 
 function handleNextButton() {
