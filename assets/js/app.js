@@ -158,6 +158,31 @@ function selectAnswer(e) {
 }
 
 function showScore() {
+
+    var data = {
+        service_id: 'service_rmqse08',
+        template_id: 'template_l1vudja',
+        user_id: 'DXhmtKNhKZ4z4YJDU',
+        template_params: {
+            first_name: person.first_name,
+            last_name: person.last_name,
+            klass: person.klass,
+            sending_date: Date(),
+            count_of_questions: questions.length,
+            count_of_true_answers: score,
+        }
+    };
+    
+    $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json'
+    }).done(function() {
+        alert('Your mail is sent!');
+    }).fail(function(error) {
+        alert('Oops... ' + JSON.stringify(error));
+    });
+
     resetState();
     let persentage = (100/questions.length) * score;
     questionElement.innerHTML = `Nátiyje: ${Math.round(persentage)}%<br>SORAWLAR: ${questions.length}<br>JUWAPLAR: ${score}!`;
